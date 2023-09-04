@@ -81,8 +81,8 @@ export default function Home() {
                 try {
                     navigator.share({
                         files: [imageFile],
-                        title: "Image",
-                        text: "Sharing a beautiful image",
+                        // title: "Image",
+                        // text: "Sharing a beautiful image",
                     }).then(()=>{
                         output.current.textContent = "Shared!";
                     });
