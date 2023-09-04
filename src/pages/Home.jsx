@@ -47,12 +47,13 @@ export default function Home() {
     }
 
     // facebook
-    const isLocal = window.location.protocol.includes('http')
+    const isLocal = process.env.NODE_ENV !== 'production'
     const uri = isLocal ? "https://www.gaia.net/tc" : window.location.href
     const resultPageUri = encodeURI(uri)
 
     return (
     <>
+        ----------ig test-----------
         <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare} className='inline-block'/>
         <br />
         <br />
@@ -60,6 +61,18 @@ export default function Home() {
         <br />
         <br />
         output: <output ref={output}></output>
+        <br />
+        <br />
+        ----------facebook test-----------
+        <br />
+        <br />
+        isLocal: {isLocal.toString()}
+        <br />
+        <br />
+        window.location.href: {window.location.href}
+        <br />
+        <br />
+        uri: {uri}
         <br />
         <br />
         {/* facebook */}
