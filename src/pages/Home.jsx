@@ -48,8 +48,9 @@ export default function Home() {
 
     async function share(){
         const imageUrl = imageToShare.current.src;
-        const base64Data = await imageUrlToBase64(imageUrl);
-        const imageBlob = base64ToBlob(base64Data);
+        const imageBlob = await fetch(imageUrl).then((response) => response.blob());
+        // const base64Data = await imageUrlToBase64(imageUrl);
+        // const imageBlob = base64ToBlob(base64Data);
         const imageFile = new File([imageBlob], "test.png", { type: "image/png" });
 
         // Check if the browser supports the Web Share API
@@ -60,8 +61,8 @@ export default function Home() {
             try {
                 navigator.share({
                     files: [imageFile],
-                    title: "Image",
-                    text: "Sharing a beautiful image",
+                    // title: "Image",
+                    // text: "Sharing a beautiful image",
                 }).then(()=>{
                     output.current.textContent = "Shared!";
                 });
