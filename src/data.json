@@ -1,0 +1,232 @@
+[
+    {
+        "id": "1",
+        "label": "src/assets/quiz/Q1.png",
+        "question": "你最怕遇到的雷隊友？",
+        "answers": [
+            {
+                "content": "整天抱怨工作太多的小明",
+                "weight": 0
+            },
+            {
+                "content": "在背後八卦別人閒事的花花",
+                "weight": 1
+            },
+            {
+                "content": "到處摸魚等下班回家的阿倫",
+                "weight": 2
+            },
+            {
+                "content": "整天抱怨工作太多的小明",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "label": "src/assets/quiz/Q2.png",
+        "question": "哪一項是你想進行的首要任務？",
+        "answers": [
+            {
+                "content": "開啟主管授權的新項目研究",
+                "weight": 0
+            },
+            {
+                "content": "專注在新功能開發",
+                "weight": 1
+            },
+            {
+                "content": "既有功能 debug",
+                "weight": 2
+            },
+            {
+                "content": "與部門同事進行快樂的聚餐",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "label": "src/assets/quiz/Q3.png",
+        "question": "你常會拿Chat GPT來做什麼呢？",
+        "answers": [
+            {
+                "content": "請Chat GPT幫忙寫Code",
+                "weight": 0
+            },
+            {
+                "content": "請Chat GPT幫忙Debug",
+                "weight": 1
+            },
+            {
+                "content": "幫忙寫教育訓練內容",
+                "weight": 2
+            },
+            {
+                "content": "問問午餐推薦的美食",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "label": "src/assets/quiz/Q4.png",
+        "question": "你認為自己哪一項能力比較突出呢？",
+        "answers": [
+            {
+                "content": "統計與掌握數據的能力",
+                "weight": 0
+            },
+            {
+                "content": "實驗規劃、邏輯推理能力",
+                "weight": 1
+            },
+            {
+                "content": "鑽研技術工具的能力",
+                "weight": 2
+            },
+            {
+                "content": "臨機應變、思考問題的能力",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "label": "src/assets/quiz/Q5.png",
+        "question": "當你要幫助客戶網站開發一個新功能時，你喜歡從哪個方向切入？",
+        "answers": [
+            {
+                "content": "從需求切入",
+                "weight": 0
+            },
+            {
+                "content": "收集並分析數據",
+                "weight": 1
+            },
+            {
+                "content": "提供不同功能 demo 給主管",
+                "weight": 2
+            },
+            {
+                "content": "與團隊開會討論",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "label": "src/assets/quiz/Q6.png",
+        "question": "當與到同事之間有爭拗，大家各持己見時，你傾向怎麼做？",
+        "answers": [
+            {
+                "content": "主動幫忙引導雙方的討論",
+                "weight": 0
+            },
+            {
+                "content": "找合適的契機幫忙協調",
+                "weight": 1
+            },
+            {
+                "content": "緩和氣氛，分散注意力",
+                "weight": 2
+            },
+            {
+                "content": "放著不管，總會有結論",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "label": "src/assets/quiz/Q7.png",
+        "question": "當同一問題反覆發生時，會先想到？",
+        "answers": [
+            {
+                "content": "繼續摸索，記錄解決過程",
+                "weight": 0
+            },
+            {
+                "content": "分析原因，了解核心問題",
+                "weight": 1
+            },
+            {
+                "content": "向他人尋求協助",
+                "weight": 2
+            },
+            {
+                "content": "果斷放棄",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "label": "src/assets/quiz/Q8.png",
+        "question": "開發功能時，你最喜歡哪個流程？",
+        "answers": [
+            {
+                "content": "將需求拆分成多個任務",
+                "weight": 0
+            },
+            {
+                "content": "和團隊進行 code review",
+                "weight": 1
+            },
+            {
+                "content": "建立計劃再開始寫 Code",
+                "weight": 2
+            },
+            {
+                "content": "設定假設、優化模型",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "label": "src/assets/quiz/Q9.png",
+        "question": "當同事小明在茶水間分享你的八卦，你會？",
+        "answers": [
+            {
+                "content": "衝進去質問他",
+                "weight": 0
+            },
+            {
+                "content": "裝作沒聽到走進去裝水",
+                "weight": 1
+            },
+            {
+                "content": "隨便怎麼講，我不在乎",
+                "weight": 2
+            },
+            {
+                "content": "忍住，以後走著瞧",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "10",
+        "label": "src/assets/quiz/Q10.png",
+        "question": "午餐時間你習慣？",
+        "answers": [
+            {
+                "content": "自己在位子享受獨處時光",
+                "weight": 0
+            },
+            {
+                "content": "跟同事一起出去吃午餐",
+                "weight": 1
+            },
+            {
+                "content": "跟同事一起叫外送回來吃",
+                "weight": 2
+            },
+            {
+                "content": "邊追劇邊吃飯",
+                "weight": 3
+            }
+        ]
+    }
+]
