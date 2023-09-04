@@ -121,7 +121,7 @@ export default function Home() {
         ----------ig test-----------
         <br />
         <br />
-        <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare} className='inline-block'/>
+        <img src={getImageUrl('knight_download')} alt="" width={100} ref={imageToShare} className='inline-block'/>
         <br />
         <br />
         <button className='border border-slate-700 p-3' onClick={share} type="button">Share this image!</button>
