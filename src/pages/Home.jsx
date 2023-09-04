@@ -43,17 +43,12 @@ export default function Home() {
         });
     }
     
-
     const imageToShare = useRef(null)
     const output = useRef(null)
 
     async function share(){
         const imageUrl = imageToShare.current.src;
-
-        // Usage:
         const base64Data = await imageUrlToBase64(imageUrl);
-
-        // `base64Data` contains the base64-encoded image data
         const imageBlob = base64ToBlob(base64Data);
         const imageFile = new File([imageBlob], "test.png", { type: "image/png" });
 
@@ -83,6 +78,44 @@ export default function Home() {
     const uri = isLocal ? "https://www.gaia.net/tc" : window.location.href
     const resultPageUri = encodeURI(uri)
 
+    // function fbs_click() {
+    //     const u = imageToShare.current.src;
+    //     // t=document.title;
+    //     const t = imageToShare.current.getAttribute('alt');
+    //     window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');
+    //     return false;
+    // }
+
+    // function sharefbimage() {
+    //     FB.init({ appId: `your appid`, status: true, cookie: true });
+    //     FB.ui(
+    //         {
+    //             method: `share`,
+    //             name: 'Facebook Dialogs',
+    //             href: $(location).attr('href'),
+    //             link: 'https://developers.facebook.com/docs/dialogs/',
+    //             picture: 'your image url',
+    //             caption: 'Ishelf Book',
+    //             description: 'your description'
+    //         },
+    //         function (response) {
+    //             if (response && response.post_id) {
+    //                 alert('success');
+    //             } else {
+    //                 alert('error');
+    //             }
+    //         }
+    //     )
+    // };
+
+    function shareit(){
+        // var url = "http://www.example.com"; //Set desired URL here
+        var img = imageToShare.current.src; //Set Desired Image here
+        // var totalurl=encodeURIComponent(url+'?img='+img);
+        
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(img)}`, 'facebook_share', 'width=600,height=400');
+    }
+
     return (
     <>
         ----------ig test-----------
@@ -109,6 +142,9 @@ export default function Home() {
         uri: {uri}
         <br />
         <br />
+        <button onClick={shareit}>share fb</button>
+        <br />
+        <br />
         {/* facebook */}
         <div className="fb-share-button border rounded-lg w-1/2 py-1.5" data-href={resultPageUri} data-layout="" data-size="">
             <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${resultPageUri}`} className="fb-xfbml-parse-ignore flex items-center justify-center">
@@ -116,6 +152,7 @@ export default function Home() {
                 <span className='mx-2'>Facebook</span>
             </a>
         </div>
+        
         <br />
         <br />
         <div>NODE_ENV: {process.env.NODE_ENV}</div>
