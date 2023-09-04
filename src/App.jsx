@@ -6,8 +6,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  function getImageUrl(name) {
+    return new URL(`/src/assets/${name}.png`, import.meta.url).href
+  }
+
   return (
     <>
+      <img src={getImageUrl('dialog')} alt="" />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
