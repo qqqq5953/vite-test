@@ -6,12 +6,13 @@ import Home from './pages/Home'
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Home />}></Route>
-      {/* <Route path="/quiz" element={<Quiz />}></Route> */}
-      {/* <Route path="/result" element={<Result />}></Route>
-      <Route path="/download" element={<Download />}></Route> */}
-    </Routes>
+    <Home />
+    // <Routes>
+    //   <Route index element={<Home />}></Route>
+    //   <Route path="/quiz" element={<Quiz />}></Route>
+    //   <Route path="/result" element={<Result />}></Route>
+    //   <Route path="/download" element={<Download />}></Route>
+    // </Routes>
   )
 }
 
