@@ -15,33 +15,11 @@ export default function Home() {
         return new Blob([byteArray], { type: "image/png" });
     }
 
-    const imageToShare = useRef(null)
-    const output = useRef(null)
-
-    async function share(){
-        const imageUrl = imageToShare.current.src;
-        console.log('imageUrl',imageUrl);
-
-        // var file = imageToShare.current.files[0];
-        console.log('imageToShare.current',imageToShare.current);
-
-        // function getBase64Image(img) {
-        //     var canvas = document.createElement("canvas");
-        //     canvas.width = img.width;
-        //     canvas.height = img.height;
-        //     var ctx = canvas.getContext("2d");
-        //     ctx.drawImage(img, 0, 0);
-        //     var dataURL = canvas.toDataURL("image/png");
-        //     return dataURL.replace(/^data:image\/?[A-z]*;base64,/);
-        // }
-        
-        // var imageBase64 = getBase64Image(imageToShare.current);
-        // console.log('imageBase64',imageBase64);
-
-        function imageUrlToBase64(imageUrl, callback) {
+    function imageUrlToBase64(imageUrl) {
+        return new Promise((resolve, reject) => {
             const img = new Image();
-            img.crossOrigin = "Anonymous"; // This is important for cross-origin images
-            
+            img.crossOrigin = "Anonymous";
+        
             img.onload = function () {
                 const canvas = document.createElement("canvas");
                 canvas.width = img.width;
@@ -53,57 +31,51 @@ export default function Home() {
                 // Get the base64 data URL
                 const base64Data = canvas.toDataURL("image/png"); // You can specify the image format here
             
-                // Execute the callback with the base64 data URL
-                callback(base64Data);
+                // Resolve the Promise with the base64 data URL
+                resolve(base64Data);
             };
-            
-            img.src = imageUrl;
-        }
         
-        // Usage:
-        imageUrlToBase64(imageToShare.current.src, function (base64Data) {
-        // `base64Data` contains the base64-encoded image data
-            console.log("base64Data",base64Data);
-            const imageBlob = base64ToBlob(base64Data);
-            console.log('imageBlob',imageBlob);
-
-            const imageFile = new File([imageBlob], "test.png", { type: "image/png" });
-            console.log('imageFile',imageFile);
-
-                    // Check if the browser supports the Web Share API
-            if (!navigator.canShare) {
-                output.current.textContent = `Your browser doesn't support the Web Share API.`;
-                return;
-            }
-
-            // Check if sharing files is supported
-            if (navigator.canShare({ files: [imageFile] })) {
-                try {
-                    navigator.share({
-                        files: [imageFile],
-                        // title: "Image",
-                        // text: "Sharing a beautiful image",
-                    }).then(()=>{
-                        output.current.textContent = "Shared!";
-                    });
-                } catch (error) {
-                    output.current.textContent = `Error: ${error.message}`;
-                }
-            } else {
-                output.current.textContent = `Your system doesn't support sharing these files.`;
-            }
+            img.onerror = function () {
+                reject(new Error("Failed to load image."));
+            };
+        
+            img.src = imageUrl;
         });
-
-
-        // Fetch the image as a Blob
-        // const imageBlob = await fetch(imageUrl).then((response) => response.blob());
-        // const imageBlob = base64ToBlob(imageBase64);
-        // console.log('imageBlob',imageBlob);
-
-        // Create a File object from the Blob (you can specify a custom file name)
+    }
     
 
+    const imageToShare = useRef(null)
+    const output = useRef(null)
 
+    async function share(){
+        const imageUrl = imageToShare.current.src;
+
+        // Usage:
+        const base64Data = await imageUrlToBase64(imageUrl);
+
+        // `base64Data` contains the base64-encoded image data
+        const imageBlob = base64ToBlob(base64Data);
+        const imageFile = new File([imageBlob], "test.png", { type: "image/png" });
+
+        // Check if the browser supports the Web Share API
+        if (!navigator.canShare) return alert("您的瀏覽器不支援分享功能")
+
+        // Check if sharing files is supported
+        if (navigator.canShare({ files: [imageFile] })) {
+            try {
+                navigator.share({
+                    files: [imageFile],
+                    title: "Image",
+                    text: "Sharing a beautiful image",
+                }).then(()=>{
+                    output.current.textContent = "Shared!";
+                });
+            } catch (error) {
+                alert(`Error: ${error.message}`)
+            }
+        } else {
+            alert("您的瀏覽器不支援分享功能")
+        }
     }
 
     // facebook
@@ -117,7 +89,6 @@ export default function Home() {
         <br />
         <br />
         <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare} className='inline-block'/>
-        <input type="file" />
         <br />
         <br />
         <button className='border border-slate-700 p-3' onClick={share} type="button">Share this image!</button>
