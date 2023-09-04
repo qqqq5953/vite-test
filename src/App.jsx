@@ -49,14 +49,18 @@ function App() {
 
   return (
     <>
-      <div>
-        <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare}/>
+      <div className='text-center'>
+        <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare} className='inline-block'/>
       </div>
-      <button onClick={share} type="button">Share this image!</button>
       <br />
-      <output ref={output}></output>
-
-      <div>Vite + React: {process.env.NODE_ENV}</div>
+      <br />
+      <button className='border border-slate-700 p-3' onClick={share} type="button">Share this image!</button>
+      <br />
+      <br />
+      output: <output ref={output}></output>
+      <br />
+      <br />
+      <div>NODE_ENV: {process.env.NODE_ENV}</div>
     </>
   )
 }
