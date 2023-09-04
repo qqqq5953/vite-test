@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 
 export default function Home() {
-    function getImageUrl(name) {
-        return new URL(`/src/assets/${name}.png`, import.meta.url).href
-      }
-    
+    function getImageUrl(dir, name, extenstion = 'png') {
+        return new URL(`/src/assets/${dir}/${name}.${extenstion}`, import.meta.url).href
+    }
+
     const imageToShare = useRef(null)
     const output = useRef(null)
 
@@ -46,6 +46,11 @@ export default function Home() {
     }
     }
 
+    // facebook
+    const isLocal = window.location.protocol.includes('http')
+    const uri = isLocal ? "https://www.gaia.net/tc" : window.location.href
+    const resultPageUri = encodeURI(uri)
+
     return (
     <>
         <img src={getImageUrl('dialog')} alt="" width={100} ref={imageToShare} className='inline-block'/>
@@ -55,6 +60,15 @@ export default function Home() {
         <br />
         <br />
         output: <output ref={output}></output>
+        <br />
+        <br />
+        {/* facebook */}
+        <div className="fb-share-button border rounded-lg w-1/2 py-1.5" data-href={resultPageUri} data-layout="" data-size="">
+            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${resultPageUri}`} className="fb-xfbml-parse-ignore flex items-center justify-center">
+                {/* <img src={getImageUrl('result-element', 'fb')} alt="facebook" className='w-8 h-8' /> */}
+                <span className='mx-2'>Facebook</span>
+            </a>
+        </div>
         <br />
         <br />
         <div>NODE_ENV: {process.env.NODE_ENV}</div>
