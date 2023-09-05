@@ -1,6 +1,45 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
+
+const lg = window.matchMedia("(min-width: 1200px)")
+const md = window.matchMedia("(min-width: 768px) and (max-width: 1199px)")
+const sm = window.matchMedia("(min-width: 375px) and (max-width: 767px)")
 
 export default function Home() {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [lgSize, setLgSize] = useState(lg.matches)
+    const [mdSize, setMdSize] = useState(md.matches)
+    const [smSize, setSmSize] = useState(sm.matches)
+
+    function handleLg(e) {
+        if (e.matches) return
+        if (sm.matches) setSmSize(true)
+        if (md.matches) setMdSize(true)
+    }
+
+    function handleMd(e) {
+        if (e.matches) return
+        if (sm.matches) setSmSize(true)
+        if (lg.matches) setLgSize(true)
+    }
+
+    function handleSm(e) {
+        if (e.matches) return
+        if (md.matches) setMdSize(true)
+        if (lg.matches) setLgSize(true)
+    }
+
+    useEffect(() => {
+        lg.addEventListener("change", handleLg)
+        md.addEventListener("change", handleMd)
+        sm.addEventListener("change", handleSm)
+
+        return () => {
+            lg.removeEventListener("change", handleLg)
+            md.removeEventListener("change", handleMd)
+            sm.removeEventListener("change", handleSm)
+        }
+    }, [])
+
     function getImageUrl(name) {
         return new URL(`/src/assets/${name}.png`, import.meta.url).href
     }
