@@ -41,7 +41,8 @@ export default function Home() {
 
     function shareit(){
         var img = imageToShare.current.src; //Set Desired Image here
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(img)}`, 'facebook_share', 'width=600,height=400');
+        // window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(img)}`, 'facebook_share', 'width=600,height=400');
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(img)}`, 'sharer','toolbar=0,status=0,width=1200,height=630', '_blank');
     }
 
     function test(){
