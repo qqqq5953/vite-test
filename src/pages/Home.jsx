@@ -40,22 +40,31 @@ export default function Home() {
     const resultPageUri = encodeURI(uri)
 
     function shareit(){
-        // var url = "http://www.example.com"; //Set desired URL here
         var img = imageToShare.current.src; //Set Desired Image here
-        // var totalurl=encodeURIComponent(url+'?img='+img);
-        
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(img)}`, 'facebook_share', 'width=600,height=400');
+    }
+
+    function test(){
+
     }
 
     return (
     <div className='mx-auto max-w-[400px] text-center px-2'>
         <img src={getImageUrl('knight_download')} alt="" width={100} ref={imageToShare} className='inline-block'/>
+
         <br />
         <br />
+        <button className='border border-slate-700 p-3' onClick={test} type="button">FB only image</button>
+        <br />
+        <br />
+
+        {/* ig share api */}
         <h2 className='text-xl text-blue-900 font-bold'>ig share api</h2>
         <br />
         <button className='border border-slate-700 p-3' onClick={shareFromAPI} type="button">IG share api</button>
         <br />
+
+        {/* facebook share api */}
         <br />
         <h2 className='text-xl text-blue-900 font-bold'>facebook share api</h2>
         <br />
@@ -66,16 +75,18 @@ export default function Home() {
         <br />
         <br />
         <div>------------------------------------</div>
+
+        {/* facebook from sdk */}
         <br />
         <h2 className='text-xl text-blue-900 font-bold'>facebook from sdk</h2>
         <br />
-        {/* facebook */}
         <div className="fb-share-button border rounded-lg w-auto py-3" data-href={resultPageUri} data-layout="" data-size="">
             <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${resultPageUri}`} className="fb-xfbml-parse-ignore flex items-center justify-center">
-                {/* <img src={getImageUrl('result-element', 'fb')} alt="facebook" className='w-8 h-8' /> */}
-                <span className='mx-2'>FB from SDK</span>
+            FB from SDK
             </a>
         </div>
+
+        {/* facebook from window open */}
         <br />
         <h2 className='text-xl text-blue-900 font-bold'>facebook from window open</h2>
         <br />
